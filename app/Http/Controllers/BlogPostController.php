@@ -83,4 +83,14 @@ class BlogPostController extends Controller
 
         return redirect('/blog');
     }
+
+    public function welcome(){
+        $posts = BlogPost::all();
+        $postsLimit = $posts->take(4);
+
+        return view('blog.welcome', [
+            'posts'=> $posts,
+            'postsLimit'=>$postsLimit,
+        ]);
+    }
 }
